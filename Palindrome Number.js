@@ -40,10 +40,12 @@ var isPalindrome = function(x) {
     let splittedArray = x.toString().split('')
     let reversedArray = []
     
+    //iterating backwards  
     for (let i = splittedArray.length-1 ; i>=0 ; i--){
         reversedArray.push(splittedArray[i])
-        //iterating backwards              
+                   
     }
+    //comparing each array value
     for (let i = 0 ; i < splittedArray.length ; i++){
         if (splittedArray[i] !== reversedArray[i]){
             return false

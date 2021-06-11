@@ -35,21 +35,49 @@ Constraints:
 
 */
 
-var isPalindrome = function(x) {
-    
-    let splittedArray = x.toString().split('')
-    let reversedArray = []
-    
-    //iterating backwards  
-    for (let i = splittedArray.length-1 ; i>=0 ; i--){
-        reversedArray.push(splittedArray[i])
-                   
+var isPalindrome = function (x) {
+  let splittedArray = x.toString().split("");
+  let reversedArray = [];
+
+  //iterating backwards
+  for (let i = splittedArray.length - 1; i >= 0; i--) {
+    reversedArray.push(splittedArray[i]);
+  }
+  //comparing each array value
+  for (let i = 0; i < splittedArray.length; i++) {
+    if (splittedArray[i] !== reversedArray[i]) {
+      return false;
     }
-    //comparing each array value
-    for (let i = 0 ; i < splittedArray.length ; i++){
-        if (splittedArray[i] !== reversedArray[i]){
-            return false
-        }
-    }
-    return true
+  }
+  return true;
+};
+
+//without converting to string
+var isPalindrome = function (x) {
+  /*
+    
+    x               121
+    n               121 12  1     
+    lastDigit       0   1   2
+    reversed        0   1   12
+    
+    */
+  if (x < 0) {
+    return false;
+  }
+  if (x === 0) {
+    return true;
+  }
+  let n = x;
+  let lastDigit = 0;
+  let reversed = 0;
+  while (n > 0) {
+    lastDigit = n % 10;
+    n = Math.floor(n / 10);
+    reversed = reversed * 10 + lastDigit;
+  }
+  if (reversed === x) {
+    return true;
+  }
+  return false;
 };
